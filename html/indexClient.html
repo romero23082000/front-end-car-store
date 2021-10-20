@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script type="text/javascript" src="../js/misFuncionesClient.js"></script>
+  <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+
+<body>
+  <!-- Inicio Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="indexGama.html">Renta carros</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item ">
+          <a class="nav-link" href="indexGama.html">Gama <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="indexCar.html">Carros</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="indexClient.html">Clientes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="indexMessage.html">Mensajes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="indexReservation.html">Reservaciones</a>
+        </li>
+
+      </ul>
+    </div>
+  </nav>
+  <!-- Fin navbar -->
+
+  <div class="container">
+    <div class="row">
+      <!-- FORM -->
+      <div class="col-md-12">
+        <form class="form-horizontal">
+          <legend>Clientes</legend>
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label">Nombre cliente</label>
+            <div class="col-md-4">
+              <input id="CliName" type="text" placeholder="ej: Andres Romero" class="form-control input-md">
+              <span class="help-block">Inserte el nombre del cliente</span>
+            </div>
+          </div>
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label">Edad cliente </label>
+            <div class="col-md-4">
+              <input id="CliAge" type="number" placeholder="ej: 18" class="form-control input-md">
+              <span class="help-block">Inserte la edad del cliente </span>
+            </div>
+          </div>
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label">Email cliente</label>
+            <div class="col-md-4">
+              <input id="CliEmail" type="email" placeholder="ej: andres@gmail.com" class="form-control input-md">
+              <span class="help-block">Inserte el email del cliente </span>
+            </div>
+          </div>
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label">password cliente </label>
+            <div class="col-md-4">
+              <input id="CliPassword" class="form-control" placeholder="ej: M@nzana123" type="text">
+              <span class="help-block">Inserte la contraseña del cliente</span>
+            </div>
+          </div>
+        </form>
+        <div class="form-group">
+          <label class="col-md-4 control-label"></label>
+          <div class="col-md-4">
+            <button id="btn-save" name="btn-save" class="btn btn-success" onclick="registroClient()">Guardar</button>
+            <button id="btn-save" name="btn-save" class="btn btn-primary" onclick="obtenerClient()">Mostrar</button>
+          </div>
+        </div>
+      </div>
+      <!-- LIST -->
+      <div class=col-md-12>
+
+        <legend>Lista de clientes</legend>
+
+
+        <table class="table table-bordered table-condensed table-hover">
+          <thead>
+            <tr>
+              <td>Nombe cliente</td>
+              <td>edad cliente</td>
+              <td>email ciente</td>
+              <td>password cliente</td>
+            </tr>
+          </thead>
+          <tbody id="listarClientes">
+
+          </tbody>
+        </table>
+
+
+      </div>
+      <br>
+    </div>
+  </div>
+  <!-- <h1> Clientes</h1>
+  <div id="resultado1"></div>
+  <button onclick="obtenerClient()"> Consultar Clientes</button>
+  <div>
+    <input type="text" id="CliName" placeholder="nombre">
+    <input type="number" id="CliAge" placeholder="edad">
+    <input type="email" id="CliEmail" placeholder="email">
+    <input type="password" id="CliPassword" placeholder="password">
+  </div>
+  <button onclick="registroClient()">Guardar Cliente</button> -->
+</body>
+
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/misFuncionesCar.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <!-- Inicio Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="indexGama.html">Renta carros</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="indexGama.html">Gama <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="indexCar.html">Carros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="indexClient.html">Clientes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="indexMessage.html">Mensajes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="indexReservation.html">Reservaciones</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+    <!-- Fin navbar -->
+
+
+    <div class="container">
+        <div class="row">
+            <!-- FORM -->
+            <div class="col-md-12">
+                <form class="form-horizontal">
+                    <legend>Carros</legend>
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Nombre vehiculo</label>
+                        <div class="col-md-4">
+                            <input id="Cname" type="text" placeholder="ej: Nissan Gtr" class="form-control input-md">
+                            <span class="help-block">Inserte el nombre del vehiculo</span>
+                        </div>
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Marca vehiculo</label>
+                        <div class="col-md-4">
+                            <input id="Cbrand" type="text" placeholder="ej: Nissan" class="form-control input-md">
+                            <span class="help-block">Inserte la marca del vehiculo</span>
+                        </div>
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Año del vehiculo</label>
+                        <div class="col-md-4">
+                            <input id="Cyear" type="number" placeholder="ej: 2019" class="form-control input-md">
+                            <span class="help-block">Inserte el nombre del vehiculo</span>
+                        </div>
+                    </div>
+                    <!-- Prepended text-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Descripcion</label>
+                        <div class="col-md-4">
+                            <input id="Cdescription" class="form-control" placeholder="ej: un buen vehiculo"
+                                type="text">
+                            <span class="help-block">Inserte la descripcion de la gama</span>
+                        </div>
+                    </div>
+                </form>
+                <div class="form-group">
+                    <label class="col-md-4 control-label"></label>
+                    <div class="col-md-4">
+                        <button id="btn-save" name="btn-save" class="btn btn-success"
+                            onclick="guardarInformacionCategorias()">Guardar</button>
+                        <button id="btn-save" name="btn-save" class="btn btn-primary"
+                            onclick="traerInformacionCategorias()">Mostrar</button>
+                    </div>
+                </div>
+            </div>
+            <!-- LIST -->
+            <div class=col-md-12>
+
+                <legend>Lista de vehiculos</legend>
+
+
+                <table class="table table-bordered table-condensed table-hover">
+                    <thead>
+                        <tr>
+                            <td>Nombe vehiculo</td>
+                            <td>Marca vehiculo</td>
+                            <td>Año vehiculo</td>
+                            <td>Descripcion vehiculo</td>
+                        </tr>
+                    </thead>
+                    <tbody id="listarCarros">
+
+                    </tbody>
+                </table>
+
+
+            </div>
+            <br>
+        </div>
+    </div>
+    <!-- <h1> Carros</h1>
+    <div id="resultado1"></div>
+    <button onclick="traerInformacionCategorias()"> Consultar Carros</button>
+    <div>
+        <input type="text" id="Cname" placeholder="name">
+        <input type="text" id="Cbrand" placeholder="brand">
+        <input type="text" id="Cyear" placeholder="year">
+        <input type="text" id="Cdescription" placeholder="description">
+    </div>
+    <button onclick="guardarInformacionCategorias()">Guardar Carros</button> -->
+</body>
+
+</html>
