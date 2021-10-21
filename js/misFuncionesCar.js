@@ -1,7 +1,7 @@
 /**
  * script de JavaScript para el formulario de la tabla Car
  */
-function traerInformacionCategorias() {
+function traerInformacionCarros() {
     $.ajax({
         url: 'http://129.151.117.222:8081/api/Car/all',
         //url: 'http://localhost:8081/api/Car/all',
