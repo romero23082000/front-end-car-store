@@ -1,6 +1,7 @@
 function traerInformacionCategorias() {
   $.ajax({
-    url: "http://129.151.117.222:80/api/Gama/all",
+    //url: 'http://localhost:8081/api/Gama/all',
+    url: "http://129.151.117.222:8081/api/Gama/all",
     type: "GET",
     datatype: "JSON",
     success: function (respuesta) {
@@ -35,7 +36,8 @@ function guardarInformacionCategorias() {
     dataType: 'JSON',
     data: JSON.stringify(var2),
 
-    url: "http://129.151.117.222:80/api/Gama/save",
+    //url: 'http://localhost:8081/api/Gama/save',
+    url: "http://129.151.117.222:8081/api/Gama/save",
 
 
     success: function (response) {

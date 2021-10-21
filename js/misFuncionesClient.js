@@ -1,7 +1,8 @@
 function obtenerClient() {
     $.ajax({
         dataType: 'json',
-        url: 'http://129.151.117.222:80/api/Client/all',
+        url: 'http://localhost:8081/api/Client/all',
+        //url: 'http://129.151.117.222:8081/api/Client/all',
         type: 'GET',
         success: function (respuesta) {
             console.log(respuesta)
@@ -41,7 +42,8 @@ function registroClient() {
     $.ajax({
         dataType: 'JSON',
         data: dataTosend,
-        url: 'http://129.151.117.222:80/api/Client/save',
+        //url: 'http://129.151.117.222:8081/api/Client/save',
+        url: 'http://localhost:8081/api/Client/save',
         type: 'POST',
         contentType: "application/json; charset=utf-8",
         //contentType:'application/json',

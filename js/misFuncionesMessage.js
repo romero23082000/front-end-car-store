@@ -1,7 +1,8 @@
 function obtenerItemsMessage() {
     $.ajax({
         dataType: 'json',
-        url: 'http://129.151.117.222:80/api/Message/all',
+        url: 'http://129.151.117.222:8081/api/Message/all',
+        //url: 'http://localhost:8081/api/Message/all',
         type: 'GET',
         success: function (respuesta) {
             console.log(respuesta)
@@ -33,7 +34,8 @@ function registroMessage() {
     $.ajax({
         dataType: 'JSON',
         data: dataTosend,
-        url: 'http://129.151.117.222:80/api/Message/save',
+        //url: 'http://localhost:8081/api/Message/save',
+        url: 'http://129.151.117.222:8081/api/Message/save',
         type: 'POST',
         contentType: 'application/json; charset=utf-8',
         success: function (response) {

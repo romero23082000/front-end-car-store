@@ -3,7 +3,8 @@
  */
 function traerInformacionCategorias() {
     $.ajax({
-        url: 'http://129.151.117.222:80/api/Car/all',
+        url: 'http://129.151.117.222:8081/api/Car/all',
+        //url: 'http://localhost:8081/api/Car/all',
         dataType: 'JSON',
         type: 'GET',
         success: function (respuesta) {
@@ -44,7 +45,8 @@ function guardarInformacionCategorias() {
         dataType: 'json',
         contentType: "application/json; charset=utf-8",
         data: dataTosend,
-        url: 'http://129.151.117.222:80/api/Car/save',
+        //url: 'http://localhost:8081/api/Car/save',
+        url: 'http://129.151.117.222:8081/api/Car/save',
         type: 'POST',
         success: function (response) {
             console.log(response);

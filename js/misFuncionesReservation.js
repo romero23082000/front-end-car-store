@@ -1,6 +1,7 @@
 function traerInformacionReservaciones() {
   $.ajax({
-    url: "http://129.151.117.222:80/api/Reservation/all",
+    //url: 'http://localhost:8081/api/Reservation/all',
+    url: "http://129.151.117.222:8081/api/Reservation/all",
     type: "GET",
     datatype: "JSON",
     success: function (respuesta) {
@@ -33,7 +34,8 @@ function guardarInformacionReservaciones() {
     contentType: "application/json; charset=utf-8",
     dataType: 'JSON',
     data: JSON.stringify(var2),
-    url: "http://129.151.117.222:80/api/Reservation/save",
+    //url: 'http://localhost:8081/api/Reservation/save',
+    url: "http://129.151.117.222:8081/api/Reservation/save",
     success: function (response) {
       console.log(response);
       console.log("Se guardo correctamente");
