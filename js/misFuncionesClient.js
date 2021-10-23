@@ -1,8 +1,8 @@
 function obtenerClient() {
     $.ajax({
         dataType: 'json',
-        //url: 'http://localhost:8081/api/Client/all',
         url: 'http://129.151.117.222:8081/api/Client/all',
+        //url: 'http://129.151.117.222:8081/api/Client/all',
         type: 'GET',
         success: function (respuesta) {
             console.log(respuesta)
@@ -22,6 +22,8 @@ function pintarRespuesta(respuesta) {
         myTable += "<td>" + respuesta[i].age + "</td>";
         myTable += "<td>" + respuesta[i].email + "</td>";
         myTable += "<td>" + respuesta[i].password + "</td>";
+        myTable += '<td><button class="btn btn-warning" onclick="actualizarInformacionClient(' + respuesta[i].idClient + ')">Actualizar</button>' + "</td>";
+        myTable += '<td><button class="btn btn-danger" onclick="borrarRegistroClient(' + respuesta[i].idClient + ')">Borrar</button>' + "</td>";
         myTable += "</tr>";
     }
     myTable += "</table>";
@@ -42,8 +44,8 @@ function registroClient() {
     $.ajax({
         dataType: 'JSON',
         data: dataTosend,
+        //url: 'http://129.151.117.222:8081/api/Client/save',
         url: 'http://129.151.117.222:8081/api/Client/save',
-        //url: 'http://localhost:8081/api/Client/save',
         type: 'POST',
         contentType: "application/json; charset=utf-8",
         //contentType:'application/json',
@@ -61,91 +63,61 @@ function registroClient() {
 }
 
 
+function actualizarInformacionClient(idElemento) {
+    let myData = {
+        idClient: idElemento,
+        name: $("#CliName").val(),
+        email: $("#CliEmail").val(),
+        age: $("#CliAge").val(),
+        password: $("#CliPassword").val()
+
+    };
+    console.log(myData);
+    let dataToSend = JSON.stringify(myData);
+    $.ajax({
+        url: "http://129.151.117.222:8081/api/Client/update",
+        type: "PUT",
+        data: dataToSend,
+        contentType: "application/JSON",
+        datatype: "JSON",
+        success: function (response) {
+            $("#resultado").empty();
+            $("#id").val("");
+            $("#CliName").val("");
+            $("#CliEmail").val("");
+            $("#CliAge").val("");
+            $("#CliPassword").val("");
+            obtenerClient();
+            alert("se ha Actualizado correctamente la categoria")
+        }
+    });
+}
 
 function borrarRegistroClient(idElemento) {
-
     var elemento = {
         id: idElemento
-    }
-
-    var dataToSend = JSON.stringify(elemento);
+    };
+    var dataTosend = JSON.stringify(elemento);
     //JSON = JavaScript Object Notation
-
     $.ajax({
-
-        dataType: 'json',
-        data: dataToSend,
-        url: 'https://g7be2fcfb5932c8-db202109261658.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/client/client',
-        type: 'DELETE',
-        contentType: 'application/json',
-
-        success: function (response) {
-            console.log(response);
-        },
-
-        error: function (jqXHR, textStatus, errorThrown) {
-
-        }
-    });
-
-
-}
-
-function obtenerRegistroEspecificoClient(idRegistro) {
-
-    $.ajax({
-
-        dataType: 'json',
-        url: 'https://g7be2fcfb5932c8-db202109261658.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/client/client/' + idRegistro,
-        type: 'GET',
-
-        success: function (response) {
-            console.log(response);
-
-            var registrosClient = response.items[0];
-
-            $("#idClient").val(registrosClient.id);
-            $("#name").val(registrosClient.name);
-            $("#email").val(registrosClient.email);
-            $("#age").val(registrosClient.age);
-
-        },
-
-        error: function (jqXHR, textStatus, errorThrown) {
-
-        }
-    });
-}
-
-function actualizarClient() {
-
-    var elemento = {
-        id: $("#idClient").val(),
-        name: $("#name").val(),
-        email: $("#email").val(),
-        age: $("#age").val()
-    }
-    var dataTosend = JSON.stringify(elemento)
-    //JSON = JavaScript Object Notation
-
-    $.ajax({
-
         dataType: 'json',
         data: dataTosend,
+        url: 'http://129.151.117.222:8081/api/Client/' + idElemento,
+        type: 'DELETE',
         contentType: 'application/json',
-        url: 'https://g7be2fcfb5932c8-db202109261658.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/client/client',
-        type: 'PUT',
         success: function (response) {
             console.log(response);
+            $("#resultado").empty();
+            obtenerClient();
+            alert("Se borro correctamente")
+            //window.location.reload()
         },
-
         error: function (jqXHR, textStatus, errorThrown) {
-
         }
-
-
     });
 }
+
+
 
 
 

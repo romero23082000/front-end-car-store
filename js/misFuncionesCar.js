@@ -3,8 +3,8 @@
  */
 function traerInformacionCarros() {
     $.ajax({
+        //url: 'http://129.151.117.222:8081/api/Car/all',
         url: 'http://129.151.117.222:8081/api/Car/all',
-        //url: 'http://localhost:8081/api/Car/all',
         dataType: 'JSON',
         type: 'GET',
         success: function (respuesta) {
@@ -25,6 +25,8 @@ function pintarRespuesta(respuesta) {
         myTable += "<td>" + respuesta[i].name + "</td>";
         myTable += "<td>" + respuesta[i].year + "</td>";
         myTable += "<td>" + respuesta[i].description + "</td>";
+        myTable += '<td><button class="btn btn-warning" onclick="actualizarInformacionCar(' + respuesta[i].idCar + ')">Actualizar</button>' + "</td>";
+        myTable += '<td><button class="btn btn-danger" onclick="borrarRegistroCar(' + respuesta[i].idCar + ')">Borrar</button>' + "</td>";
         myTable += "</tr>";
     }
     myTable += "</table>";
@@ -45,8 +47,8 @@ function guardarInformacionCategorias() {
         dataType: 'json',
         contentType: "application/json; charset=utf-8",
         data: dataTosend,
-        //url: 'http://localhost:8081/api/Car/save',
         url: 'http://129.151.117.222:8081/api/Car/save',
+        //url: 'http://129.151.117.222:8081/api/Car/save',
         type: 'POST',
         success: function (response) {
             console.log(response);
@@ -76,58 +78,48 @@ function borrarRegistroCar(idElemento) {
     $.ajax({
         dataType: 'json',
         data: dataTosend,
-        url: 'https://g7be2fcfb5932c8-db202109261658.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/car/car',
+        url: 'http://129.151.117.222:8081/api/Car/' + idElemento,
         type: 'DELETE',
         contentType: 'application/json',
         success: function (response) {
             console.log(response);
+            $("#resultado").empty();
+            traerInformacionCarros();
+            alert("Se borro correctamente")
+            //window.location.reload()
         },
         error: function (jqXHR, textStatus, errorThrown) {
         }
     });
 }
-
-function obtenerRegistroEspecificoCar(idItem) {
+function actualizarInformacionCar(idElemento) {
+    let myData = {
+        idCar: idElemento,
+        brand: $("#Cbrand").val(),
+        name: $("#Cname").val(),
+        year: $("#Cyear").val(),
+        description: $("#Cdescription").val()
+    };
+    console.log(myData);
+    let dataToSend = JSON.stringify(myData);
     $.ajax({
-        dataType: 'json',
-        url: 'https://g7be2fcfb5932c8-db202109261658.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/car/car/' + idItem,
-        type: 'GET',
+        url: "http://129.151.117.222:8081/api/Car/update",
+        type: "PUT",
+        data: dataToSend,
+        contentType: "application/JSON",
+        datatype: "JSON",
         success: function (response) {
-            console.log(response);
-            var registrosCar = response.items[0];
-            $("#idCar").val(registrosCar.id);
-            $("#brand").val(registrosCar.brand);
-            $("#model").val(registrosCar.model);
-            $("#category_id").val(registrosCar.category_id);
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
+            $("#resultado").empty();
+            $("#id").val("");
+            $("#Cname").val("");
+            $("#Cbrand").val("");
+            $("#Cyear").val("");
+            $("#Cdescription").val("");
+            traerInformacionCarros();
+            alert("se ha Actualizado correctamente la categoria")
         }
     });
 }
 
-function actualizarRegistroCar() {
 
-    var elemento = {
-        id: $("#idCar").val(),
-        brand: $("#brand").val(),
-        model: $("#model").val(),
-        category_id: $("#category_id").val()
-    }
 
-    var dataTosend = JSON.stringify(elemento)
-    //JSON = JavaScript Object Notation
-
-    $.ajax({
-
-        dataType: 'json',
-        data: dataTosend,
-        contentType: 'application/json',
-        url: "https://g7be2fcfb5932c8-db202109261658.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/car/car",
-        type: 'PUT',
-        success: function (response) {
-            console.log(response);
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-        }
-    });
-}
