@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script type="text/javascript" src="../js/misFuncionesCar.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+
+<body>
+  <!-- Inicio Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="indexGama.html">Renta carros</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item ">
+          <a class="nav-link" href="indexGama.html">Gama <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="indexCar.html">Carros</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="indexClient.html">Clientes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="indexMessage.html">Mensajes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="indexReservation.html">Reservaciones</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="indexAdmin.html">Admin</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="row">
+      <!-- FORM -->
+      <div class="col-md-12">
+        <form class="form-horizontal">
+          <legend>Usuarios Admin</legend>
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label">Nombre Admin</label>
+            <div class="col-md-4">
+              <input id="adminName" type="text" placeholder="ej: andres" class="form-control input-md">
+              <span class="help-block">Inserte el nombre del admin</span>
+            </div>
+          </div>
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label">Email Admin</label>
+            <div class="col-md-4">
+              <input id="adminEmail" type="email" placeholder="ej: andres@gmail.com" class="form-control input-md">
+              <span class="help-block">Inserte el email del admin</span>
+            </div>
+          </div>
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label">Contraseña</label>
+            <div class="col-md-4">
+              <input id="adminPassword" type="password" placeholder="ej: 1234567" class="form-control input-md">
+              <span class="help-block">Inserte el password del admin</span>
+            </div>
+          </div>
+        </form>
+        <div class="form-group">
+          <label class="col-md-4 control-label"></label>
+          <div class="col-md-4">
+            <button id="btn-save" name="btn-save" class="btn btn-success"
+              onclick="guardarInformacionAdmin()">Guardar</button>
+            <button id="btn-save" name="btn-save" class="btn btn-primary"
+              onclick="traerInformacionAdmin()">Mostrar</button>
+          </div>
+        </div>
+      </div>
+      <!-- LIST -->
+      <div class=col-md-12>
+        <legend>Lista de Usuarios Admin</legend>
+        <table class="table table-bordered table-condensed table-hover">
+          <thead>
+            <tr>
+              <td>Nombe Admin</td>
+              <td>Email Admin</td>
+              <td>password Admin</td>
+              <td>Actualizar</td>
+              <td>Borrar</td>
+            </tr>
+          </thead>
+          <tbody id="listarAdmin">
+
+          </tbody>
+        </table>
+      </div>
+      <br>
+    </div>
+  </div>
+  <!-- Fin navbar -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
