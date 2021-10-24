@@ -76,7 +76,7 @@ function borrarRegistroAdmin(idElemento) {
     success: function (response) {
       console.log(response);
       $("#resultado").empty();
-      traerInformacionCarros();
+      traerInformacionAdmin();
       alert("Se borro correctamente")
       //window.location.reload()
     },
@@ -107,7 +107,7 @@ function actualizarInformacionAdmin(idElemento) {
       $("#adminName").val("");
       $("#adminEmail").val("");
       $("#adminPassword").val("");
-      traerInformacionCarros();
+      traerInformacionAdmin();
       alert("se ha Actualizado correctamente la categoria")
     }
   });
