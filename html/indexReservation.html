@@ -9,6 +9,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script type="text/javascript" src="../js/misFuncionesReservation.js"></script>
   <script type="text/javascript" src="../js/misFuncionesCar.js"></script>
+  <script type="text/javascript" src="../js/misFuncionesClient.js"></script>
+  <script type="text/javascript" src="../js/misFuncionesCalReservas.js"></script>
   <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
     integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
@@ -45,6 +47,9 @@
         <li class="nav-item">
           <a class="nav-link" href="indexReportes.html">Reportes</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="indexCalReservas.html">CalReserva</a>
+        </li>
 
       </ul>
     </div>
@@ -58,9 +63,12 @@
       <div class="col-md-12">
         <form class="form-horizontal">
           <legend>Reservaciones</legend>
+          <p>Los campos seleccionar carro y cliente no se pueden seleccionar para actualizar un elemento</p>
           <!-- Text input-->
           <script type="text/javascript">
             window.onload = traerInformacionCarros();
+            window.onload = obtenerClient();
+            window.onload = traerInformacionCalReserva();
           </script>
           <div class="form-group">
             <label class="col-md-4 control-label">Fecha de reserva</label>
@@ -68,34 +76,38 @@
               <input id="startDate" type="date" placeholder="ej: 20/10/2021" class="form-control input-md">
               <span class="help-block">Inserte la fecha de la reserva</span>
             </div>
-          </div>
-          <!-- Text input-->
-          <div class="form-group">
-            <label class="col-md-4 control-label">Fecha de devolucion</label>
-            <div class="col-md-4">
-              <input id="devolutionDate" type="date" placeholder="ej: 29/10/2021" class="form-control input-md">
-              <span class="help-block">fecha de devolucion de reserva</span>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label">Fecha de devolucion</label>
+              <div class="col-md-4">
+                <input id="devolutionDate" type="date" placeholder="ej: 29/10/2021" class="form-control input-md">
+                <span class="help-block">fecha de devolucion de reserva</span>
+              </div>
             </div>
-          </div>
-          <select class="custom-select col-md-4 " id="inputGroupSelect01">
-          </select>
+            <div class="form-group">
+              <label class="col-md-4 control-label">Fecha de devolucion</label>
+              <div class="col-md-4">
+                <input id="status" type="text" placeholder="ej: completed" class="form-control input-md">
+                <span class="help-block">fecha de devolucion de reserva</span>
+              </div>
+            </div>
+            <select class="custom-select col-md-4 " id="carmessage">
+            </select>
+            <hr>
+            <select class="custom-select col-md-4 " id="inputGroupSelect02"></select>
         </form>
-        <div class="form-group">
-          <label class="col-md-4 control-label"></label>
-          <div class="col-md-4">
-            <button id="btn-save" name="btn-save" class="btn btn-success"
-              onclick="guardarInformacionReservaciones()">Guardar</button>
-            <button id="btn-save" name="btn-save" class="btn btn-primary"
-              onclick="traerInformacionReservaciones()">Mostrar</button>
-          </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label"></label>
+        <div class="col-md-4">
+          <button class="btn btn-success" onclick="guardarInformacionReservaciones()">Guardar</button>
+          <button onclick="traerInformacionReservaciones()" class="btn btn-primary">mostrar</button>
         </div>
       </div>
       <!-- LIST -->
       <div class=col-md-12>
-
         <legend>Lista de reservas</legend>
-
-
         <table class="table table-bordered table-condensed table-hover">
           <thead>
             <tr>
@@ -103,6 +115,9 @@
               <td>Fecha de reserva</td>
               <td>Fecha de entrega</td>
               <td>Nombre del vehiculo</td>
+              <td>Nombre del cliente</td>
+              <td>Email del cliente</td>
+              <td>Estado</td>
               <td>Actualizar</td>
               <td>Borrar</td>
             </tr>

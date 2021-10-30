@@ -2,18 +2,17 @@
  * script de JavaScript para el formulario de la tabla Car
  */
 
-
 function traerInformacionCarros() {
     console.log("Se esta ejecutando")
     $.ajax({
         //url: 'http://129.151.117.222:8081/api/Car/all',
-        url: 'http://localhost:8081/api/Car/all',
+        url: 'http://129.151.117.222:8081/api/Car/all',
         dataType: 'JSON',
         type: 'GET',
         success: function (respuesta) {
             console.log(respuesta)
             pintarRespuesta(respuesta)
-            let $select = $("#inputGroupSelect01");
+            let $select = $("#carmessage");
             $.each(respuesta, function (idCar, name) {
                 $select.append('<option value=' + name.idCar + '>' + name.name + '</option>');
                 console.log("select " + name.idCar);
@@ -57,7 +56,7 @@ function guardarInformacionCarros() {
         dataType: 'json',
         contentType: "application/json; charset=utf-8",
         data: dataTosend,
-        url: 'http://localhost:8081/api/Car/save',
+        url: 'http://129.151.117.222:8081/api/Car/save',
         //url: 'http://129.151.117.222:8081/api/Car/save',
         type: 'POST',
         success: function (response) {
@@ -88,7 +87,7 @@ function borrarRegistroCar(idElemento) {
     $.ajax({
         dataType: 'json',
         data: dataTosend,
-        url: 'http://localhost:8081/api/Car/' + idElemento,
+        url: 'http://129.151.117.222:8081/api/Car/' + idElemento,
         type: 'DELETE',
         contentType: 'application/json',
         success: function (response) {
@@ -108,7 +107,8 @@ function actualizarInformacionCar(idElemento) {
         brand: $("#Cbrand").val(),
         name: $("#Cname").val(),
         year: $("#Cyear").val(),
-        description: $("#Cdescription").val()
+        description: $("#Cdescription").val(),
+        gama: { idGama: +$("#inputGroupSelect01").val() },
     };
     console.log(myData);
     let dataToSend = JSON.stringify(myData);
@@ -120,7 +120,6 @@ function actualizarInformacionCar(idElemento) {
         datatype: "JSON",
         success: function (response) {
             $("#resultado").empty();
-            $("#id").val("");
             $("#Cname").val("");
             $("#Cbrand").val("");
             $("#Cyear").val("");

@@ -3,7 +3,7 @@ function traerInformacionCategorias() {
   console.log("esta funcionado")
   $.ajax({
     //url: 'http://129.151.117.222:8081/api/Gama/all',
-    url: "http://localhost:8081/api/Gama/all",
+    url: "http://129.151.117.222:8081/api/Gama/all",
     type: "GET",
     datatype: "JSON",
     success: function (respuesta) {
@@ -49,7 +49,7 @@ function guardarInformacionCategorias() {
     dataType: 'JSON',
     data: JSON.stringify(var2),
     //url: 'http://129.151.117.222:8081/api/Gama/save',
-    url: "http://localhost:8081/api/Gama/save",
+    url: "http://129.151.117.222:8081/api/Gama/save",
     success: function (response) {
       console.log(response);
       console.log("Se guardo correctamente");
@@ -75,6 +75,7 @@ function actualizarInformacionCategorias(idElemento) {
   console.log(myData);
   let dataToSend = JSON.stringify(myData);
   $.ajax({
+    //url: "http://129.151.117.222:8081/api/Gama/update",
     url: "http://129.151.117.222:8081/api/Gama/update",
     type: "PUT",
     data: dataToSend,
@@ -100,7 +101,7 @@ function borrarRegistroGama(idElemento) {
   $.ajax({
     dataType: 'json',
     data: dataTosend,
-    url: 'http://localhost:8081/api/Gama/' + idElemento,
+    url: 'http://129.151.117.222:8081/api/Gama/' + idElemento,
     type: 'DELETE',
     contentType: 'application/json',
     success: function (response) {

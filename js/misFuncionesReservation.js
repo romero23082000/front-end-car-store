@@ -1,12 +1,19 @@
+
 function traerInformacionReservaciones() {
+  console.log("funciona");
   $.ajax({
     //url: 'http://localhost:8081/api/Reservation/all',
-    url: "http://localhost:8081/api/Reservation/all",
+    url: "http://129.151.117.222:8081/api/Reservation/all",
     type: "GET",
     datatype: "JSON",
     success: function (respuesta) {
       console.log(respuesta);
       pintarRespuestaReservation(respuesta);
+      let $select = $("#select");
+      $.each(respuesta, function (id, name) {
+        $select.append('<option value=' + name.idReservation + '>' + name.idReservation + '</option>');
+        console.log("select " + name.idReservation);
+      });
     }
   });
 }
@@ -20,6 +27,9 @@ function pintarRespuestaReservation(respuesta) {
     myTable += "<td>" + respuesta[i].startDate + "</td>";
     myTable += "<td>" + respuesta[i].devolutionDate + "</td>";
     myTable += "<td>" + respuesta[i].car.name + "</td>";
+    myTable += '<td>' + respuesta[i].client.name + "</td>";
+    myTable += '<td>' + respuesta[i].client.email + "</td>";
+    myTable += '<td>' + respuesta[i].status + "</td>";
     myTable += '<td><button class="btn btn-warning" onclick="actualizarInformacionReservation(' + respuesta[i].idReservation + ')">Actualizar</button>' + "</td>";
     myTable += '<td><button class="btn btn-danger" onclick="borrarRegistroReservation(' + respuesta[i].idReservation + ')">Borrar</button>' + "</td>";
     myTable += "</tr>";
@@ -33,7 +43,9 @@ function guardarInformacionReservaciones() {
 
     startDate: $("#startDate").val(),
     devolutionDate: $("#devolutionDate").val(),
-    car: { idCar: +$("#inputGroupSelect01").val() },
+    status: $("#status").val(),
+    car: { idCar: +$("#carmessage").val() },
+    client: { idClient: +$("#inputGroupSelect02").val() }
   };
   $.ajax({
     type: 'POST',
@@ -41,7 +53,7 @@ function guardarInformacionReservaciones() {
     dataType: 'JSON',
     data: JSON.stringify(var2),
     //url: 'http://localhost:8081/api/Reservation/save',
-    url: "http://localhost:8081/api/Reservation/save",
+    url: "http://129.151.117.222:8081/api/Reservation/save",
     success: function (response) {
       console.log(response);
       console.log("Se guardo correctamente");
@@ -60,7 +72,8 @@ function actualizarInformacionReservation(idElemento) {
   let myData = {
     idReservation: idElemento,
     startDate: $("#startDate").val(),
-    devolutionDate: $("#devolutionDate").val()
+    devolutionDate: $("#devolutionDate").val(),
+    status: $("#status").val()
 
   };
   console.log(myData);
@@ -91,7 +104,7 @@ function borrarRegistroReservation(idElemento) {
   $.ajax({
     dataType: 'json',
     data: dataTosend,
-    url: 'http://localhost:8081/api/Reservation/' + idElemento,
+    url: 'http://129.151.117.222:8081/api/Reservation/' + idElemento,
     type: 'DELETE',
     contentType: 'application/json',
     success: function (response) {

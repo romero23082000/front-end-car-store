@@ -3,7 +3,7 @@
  */
 function traerInformacionAdmin() {
   $.ajax({
-    url: 'http://localhost:8081/api/Admin/all',
+    url: 'http://129.151.117.222:8081/api/Admin/all',
     dataType: 'JSON',
     type: 'GET',
     success: function (respuesta) {
@@ -42,7 +42,7 @@ function guardarInformacionAdmin() {
     dataType: 'json',
     contentType: "application/json; charset=utf-8",
     data: dataTosend,
-    url: 'http://localhost:8081/api/Admin/save',
+    url: 'http://129.151.117.222:8081/api/Admin/save',
     //url: 'http://129.151.117.222:8081/api/Admin/save',
     type: 'POST',
     success: function (response) {
@@ -69,7 +69,7 @@ function borrarRegistroAdmin(idElemento) {
   $.ajax({
     dataType: 'json',
     data: dataTosend,
-    url: 'http://localhost:8081/api/Admin/' + idElemento,
+    url: 'http://129.151.117.222:8081/api/Admin/' + idElemento,
     type: 'DELETE',
     contentType: 'application/json',
     success: function (response) {
@@ -88,7 +88,6 @@ function borrarRegistroAdmin(idElemento) {
 function actualizarInformacionAdmin(idElemento) {
   let myData = {
     idAdmin: idElemento,
-    email: $("#adminEmail").val(),
     password: $("#adminPassword").val(),
     name: $("#adminName").val(),
   };
@@ -107,7 +106,7 @@ function actualizarInformacionAdmin(idElemento) {
       $("#adminEmail").val("");
       $("#adminPassword").val("");
       traerInformacionAdmin();
-      alert("se ha Actualizado correctamente la categoria")
+      alert("se ha Actualizado correctamente el usuario")
     }
   });
 }

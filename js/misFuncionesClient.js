@@ -1,12 +1,17 @@
 function obtenerClient() {
     $.ajax({
         dataType: 'json',
-        url: 'http://localhost:8081/api/Client/all',
+        url: 'http://129.151.117.222:8081/api/Client/all',
         //url: 'http://129.151.117.222:8081/api/Client/all',
         type: 'GET',
         success: function (respuesta) {
             console.log(respuesta)
             pintarRespuesta(respuesta)
+            let $select = $("#inputGroupSelect02");
+            $.each(respuesta, function (idCar, name) {
+                $select.append('<option value=' + name.idClient + '>' + name.name + '</option>');
+                console.log("select " + name.idClient);
+            });
         },
         error: function (jqXHR, textStatus, errorThrown) {
         }
@@ -44,7 +49,7 @@ function registroClient() {
         dataType: 'JSON',
         data: dataTosend,
         //url: 'http://129.151.117.222:8081/api/Client/save',
-        url: 'http://localhost:8081/api/Client/save',
+        url: 'http://129.151.117.222:8081/api/Client/save',
         type: 'POST',
         contentType: "application/json; charset=utf-8",
         //contentType:'application/json',
@@ -66,7 +71,6 @@ function actualizarInformacionClient(idElemento) {
     let myData = {
         idClient: idElemento,
         name: $("#CliName").val(),
-        email: $("#CliEmail").val(),
         age: $("#CliAge").val(),
         password: $("#CliPassword").val()
 
@@ -81,13 +85,11 @@ function actualizarInformacionClient(idElemento) {
         datatype: "JSON",
         success: function (response) {
             $("#resultado").empty();
-            $("#id").val("");
             $("#CliName").val("");
-            $("#CliEmail").val("");
             $("#CliAge").val("");
             $("#CliPassword").val("");
             obtenerClient();
-            alert("se ha Actualizado correctamente la categoria")
+            alert("se ha Actualizado correctamente el cliente")
         }
     });
 }

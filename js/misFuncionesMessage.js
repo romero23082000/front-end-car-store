@@ -2,7 +2,7 @@ function obtenerItemsMessage() {
     $.ajax({
         dataType: 'json',
         //url: 'http://129.151.117.222:8081/api/Message/all',
-        url: 'http://localhost:8081/api/Message/all',
+        url: 'http://129.151.117.222:8081/api/Message/all',
         type: 'GET',
         success: function (respuesta) {
             console.log(respuesta)
@@ -31,14 +31,14 @@ function pintarRespuestaMessage(respuesta) {
 function registroMessage() {
     var elemento = {
         messageText: $("#messageText").val(),
-        car: { idCar: +$("#inputGroupSelect01").val() }
+        car: { idCar: +$("#carmessage").val() }
     }
     var dataTosend = JSON.stringify(elemento);
     // JSON = JavaScript Object Notation
     $.ajax({
         dataType: 'JSON',
         data: dataTosend,
-        url: 'http://localhost:8081/api/Message/save',
+        url: 'http://129.151.117.222:8081/api/Message/save',
         //url: 'http://129.151.117.222:8081/api/Message/save',
         type: 'POST',
         contentType: 'application/json; charset=utf-8',
@@ -74,7 +74,7 @@ function actualizarInformacionMessage(idElemento) {
             $("#id").val("");
             $("#messageText").val("");
             obtenerItemsMessage()
-            alert("se ha Actualizado correctamente la categoria")
+            alert("se ha Actualizado correctamente el mensaje")
         }
     });
 }

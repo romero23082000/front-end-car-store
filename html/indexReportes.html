@@ -43,6 +43,9 @@
         <li class="nav-item">
           <a class="nav-link" href="indexReportes.html">Reportes</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="indexCalReservas.html">CalReserva</a>
+        </li>
       </ul>
     </div>
   </nav>
@@ -65,8 +68,7 @@
       <tbody id="resultadoStatus">
       </tbody>
     </table>
-    <button id="btn-save" name="btn-save" class="btn btn-success btn-block mb-2"
-      onclick="traerReporteStatus(),ocultar1()">Generar
+    <button id="btn-save" name="btn-save" class="btn btn-success btn-block mb-2" onclick="traerReporteStatus()">Generar
       reporte status reservas</button>
     <h3 id="texto3">Cantidad de reservas por cliente</h3>
     <table class="table table-bordered table-condensed table-hover">
@@ -82,7 +84,7 @@
       </tbody>
     </table>
     <button id="btn-save" name="btn-save" class="btn btn-success btn-block mb-2"
-      onclick="traerReporteClientes(),ocultar3(),mostrar3()">Generar
+      onclick="traerReporteClientes()">Generar
       cliente y reservas por cliente</button>
     <h3 id="texto2">Buscar reserva por fechas</h3>
     <table class="table table-bordered table-condensed table-hover">
@@ -111,8 +113,7 @@
         <span class="help-block">Inserte la fecha de la reserva</span>
       </div>
     </div>
-    <button id="btn-save" name="btn-save" class="btn btn-success btn-block mb-2"
-      onclick="traerReporteDate(),ocultar2()">Generar
+    <button id="btn-save" name="btn-save" class="btn btn-success btn-block mb-2" onclick="traerReporteDate()">Generar
       reporte por fechas</button>
 
 
