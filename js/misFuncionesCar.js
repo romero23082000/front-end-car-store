@@ -1,15 +1,23 @@
 /**
  * script de JavaScript para el formulario de la tabla Car
  */
+
+
 function traerInformacionCarros() {
+    console.log("Se esta ejecutando")
     $.ajax({
         //url: 'http://129.151.117.222:8081/api/Car/all',
-        url: 'http://129.151.117.222:8081/api/Car/all',
+        url: 'http://localhost:8081/api/Car/all',
         dataType: 'JSON',
         type: 'GET',
         success: function (respuesta) {
             console.log(respuesta)
             pintarRespuesta(respuesta)
+            let $select = $("#inputGroupSelect01");
+            $.each(respuesta, function (idCar, name) {
+                $select.append('<option value=' + name.idCar + '>' + name.name + '</option>');
+                console.log("select " + name.idCar);
+            });
         },
         error: function (jqXHR, textStatus, errorThrown) {
         }
@@ -17,14 +25,14 @@ function traerInformacionCarros() {
 }
 
 function pintarRespuesta(respuesta) {
-
     let myTable = "<table>";
     for (i = 0; i < respuesta.length; i++) {
         myTable += "<tr>";
-        myTable += "<td>" + respuesta[i].brand + "</td>";
         myTable += "<td>" + respuesta[i].name + "</td>";
+        myTable += "<td>" + respuesta[i].brand + "</td>";
         myTable += "<td>" + respuesta[i].year + "</td>";
         myTable += "<td>" + respuesta[i].description + "</td>";
+        myTable += "<td>" + respuesta[i].gama.name + "</td>";
         myTable += '<td><button class="btn btn-warning" onclick="actualizarInformacionCar(' + respuesta[i].idCar + ')">Actualizar</button>' + "</td>";
         myTable += '<td><button class="btn btn-danger" onclick="borrarRegistroCar(' + respuesta[i].idCar + ')">Borrar</button>' + "</td>";
         myTable += "</tr>";
@@ -34,12 +42,14 @@ function pintarRespuesta(respuesta) {
 }
 
 
-function guardarInformacionCategorias() {
+
+function guardarInformacionCarros() {
     var elemento = {
         brand: $("#Cbrand").val(),
         name: $("#Cname").val(),
         year: $("#Cyear").val(),
-        description: $("#Cdescription").val()
+        description: $("#Cdescription").val(),
+        gama: { idGama: +$("#inputGroupSelect01").val() },
     }
     var dataTosend = JSON.stringify(elemento);
     // JSON = JavaScript Object Notation
@@ -47,7 +57,7 @@ function guardarInformacionCategorias() {
         dataType: 'json',
         contentType: "application/json; charset=utf-8",
         data: dataTosend,
-        url: 'http://129.151.117.222:8081/api/Car/save',
+        url: 'http://localhost:8081/api/Car/save',
         //url: 'http://129.151.117.222:8081/api/Car/save',
         type: 'POST',
         success: function (response) {
@@ -78,7 +88,7 @@ function borrarRegistroCar(idElemento) {
     $.ajax({
         dataType: 'json',
         data: dataTosend,
-        url: 'http://129.151.117.222:8081/api/Car/' + idElemento,
+        url: 'http://localhost:8081/api/Car/' + idElemento,
         type: 'DELETE',
         contentType: 'application/json',
         success: function (response) {

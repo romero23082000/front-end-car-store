@@ -1,7 +1,7 @@
 function obtenerClient() {
     $.ajax({
         dataType: 'json',
-        url: 'http://129.151.117.222:8081/api/Client/all',
+        url: 'http://localhost:8081/api/Client/all',
         //url: 'http://129.151.117.222:8081/api/Client/all',
         type: 'GET',
         success: function (respuesta) {
@@ -21,7 +21,6 @@ function pintarRespuesta(respuesta) {
         myTable += "<td>" + respuesta[i].name + "</td>";
         myTable += "<td>" + respuesta[i].age + "</td>";
         myTable += "<td>" + respuesta[i].email + "</td>";
-        myTable += "<td>" + respuesta[i].password + "</td>";
         myTable += '<td><button class="btn btn-warning" onclick="actualizarInformacionClient(' + respuesta[i].idClient + ')">Actualizar</button>' + "</td>";
         myTable += '<td><button class="btn btn-danger" onclick="borrarRegistroClient(' + respuesta[i].idClient + ')">Borrar</button>' + "</td>";
         myTable += "</tr>";
@@ -45,7 +44,7 @@ function registroClient() {
         dataType: 'JSON',
         data: dataTosend,
         //url: 'http://129.151.117.222:8081/api/Client/save',
-        url: 'http://129.151.117.222:8081/api/Client/save',
+        url: 'http://localhost:8081/api/Client/save',
         type: 'POST',
         contentType: "application/json; charset=utf-8",
         //contentType:'application/json',

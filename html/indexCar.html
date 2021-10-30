@@ -8,6 +8,7 @@
     <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script type="text/javascript" src="../js/misFuncionesCar.js"></script>
+    <script type="text/javascript" src="../js/misFuncionesGama.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 </head>
@@ -22,7 +23,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item ">
+                <li class="nav-item">
                     <a class="nav-link" href="indexGama.html">Gama <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
@@ -38,8 +39,12 @@
                     <a class="nav-link" href="indexReservation.html">Reservaciones</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="indexAdmin.html">Admin</a>
+                    <a class="nav-link" href="indexAdmin.html">Reservaciones</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="indexReportes.html">Reportes</a>
+                </li>
+
             </ul>
         </div>
     </nav>
@@ -52,6 +57,9 @@
             <div class="col-md-12">
                 <form class="form-horizontal">
                     <legend>Carros</legend>
+                    <script type="text/javascript">
+                        window.onload = traerInformacionCategorias();
+                    </script>
                     <!-- Text input-->
                     <div class="form-group">
                         <label class="col-md-4 control-label">Nombre vehiculo</label>
@@ -85,12 +93,14 @@
                             <span class="help-block">Inserte la descripcion de la gama</span>
                         </div>
                     </div>
+                    <select class="custom-select col-md-4" id="inputGroupSelect01">
+                    </select>
                 </form>
                 <div class="form-group">
                     <label class="col-md-4 control-label"></label>
                     <div class="col-md-4">
                         <button id="btn-save" name="btn-save" class="btn btn-success"
-                            onclick="guardarInformacionCategorias()">Guardar</button>
+                            onclick="guardarInformacionCarros()">Guardar</button>
                         <button id="btn-save" name="btn-save" class="btn btn-primary"
                             onclick="traerInformacionCarros()">Mostrar</button>
                     </div>
@@ -109,6 +119,7 @@
                             <td>Marca vehiculo</td>
                             <td>Año vehiculo</td>
                             <td>Descripcion vehiculo</td>
+                            <td>Nombre gama</td>
                             <td>Actualizar</td>
                             <td>Borrar</td>
                         </tr>

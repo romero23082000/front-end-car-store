@@ -1,23 +1,25 @@
 function traerInformacionReservaciones() {
   $.ajax({
     //url: 'http://localhost:8081/api/Reservation/all',
-    url: "http://129.151.117.222:8081/api/Reservation/all",
+    url: "http://localhost:8081/api/Reservation/all",
     type: "GET",
     datatype: "JSON",
     success: function (respuesta) {
       console.log(respuesta);
-      pintarRespuesta(respuesta);
+      pintarRespuestaReservation(respuesta);
     }
   });
 }
 
-function pintarRespuesta(respuesta) {
+function pintarRespuestaReservation(respuesta) {
 
   let myTable = "<table>";
   for (i = 0; i < respuesta.length; i++) {
     myTable += "<tr>";
+    myTable += "<td>" + respuesta[i].idReservation + "</td>";
     myTable += "<td>" + respuesta[i].startDate + "</td>";
     myTable += "<td>" + respuesta[i].devolutionDate + "</td>";
+    myTable += "<td>" + respuesta[i].car.name + "</td>";
     myTable += '<td><button class="btn btn-warning" onclick="actualizarInformacionReservation(' + respuesta[i].idReservation + ')">Actualizar</button>' + "</td>";
     myTable += '<td><button class="btn btn-danger" onclick="borrarRegistroReservation(' + respuesta[i].idReservation + ')">Borrar</button>' + "</td>";
     myTable += "</tr>";
@@ -28,8 +30,10 @@ function pintarRespuesta(respuesta) {
 
 function guardarInformacionReservaciones() {
   let var2 = {
+
     startDate: $("#startDate").val(),
-    devolutionDate: $("#devolutionDate").val()
+    devolutionDate: $("#devolutionDate").val(),
+    car: { idCar: +$("#inputGroupSelect01").val() },
   };
   $.ajax({
     type: 'POST',
@@ -37,7 +41,7 @@ function guardarInformacionReservaciones() {
     dataType: 'JSON',
     data: JSON.stringify(var2),
     //url: 'http://localhost:8081/api/Reservation/save',
-    url: "http://129.151.117.222:8081/api/Reservation/save",
+    url: "http://localhost:8081/api/Reservation/save",
     success: function (response) {
       console.log(response);
       console.log("Se guardo correctamente");
@@ -87,7 +91,7 @@ function borrarRegistroReservation(idElemento) {
   $.ajax({
     dataType: 'json',
     data: dataTosend,
-    url: 'http://129.151.117.222:8081/api/Reservation/' + idElemento,
+    url: 'http://localhost:8081/api/Reservation/' + idElemento,
     type: 'DELETE',
     contentType: 'application/json',
     success: function (response) {

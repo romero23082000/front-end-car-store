@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script type="text/javascript" src="../js/misFuncionesReportes.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+
+<body>
+  <!-- Inicio Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="indexGama.html">Renta carros</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item ">
+          <a class="nav-link" href="indexGama.html">Gama <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="indexCar.html">Carros</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="indexClient.html">Clientes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="indexMessage.html">Mensajes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="indexReservation.html">Reservaciones</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="indexAdmin.html">Admin</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="indexReportes.html">Reportes</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="col-md-12">
+    <form class="form-horizontal">
+      <legend>Reportes</legend>
+    </form>
+  </div>
+  <!-- LIST -->
+  <div class=col-md-12>
+    <h3 id="texto1">Reporte de reservas</h3>
+    <table class="table table-bordered table-condensed table-hover">
+      <thead>
+        <tr>
+          <td>Numero de reservas completadas</td>
+          <td>numero de reserva canceladas</td>
+        </tr>
+      </thead>
+      <tbody id="resultadoStatus">
+      </tbody>
+    </table>
+    <button id="btn-save" name="btn-save" class="btn btn-success btn-block mb-2"
+      onclick="traerReporteStatus(),ocultar1()">Generar
+      reporte status reservas</button>
+    <h3 id="texto3">Cantidad de reservas por cliente</h3>
+    <table class="table table-bordered table-condensed table-hover">
+      <thead>
+        <tr>
+          <td>total</td>
+          <td>nombre cliente</td>
+          <td>email cliente</td>
+          <td>edad cliente</td>
+        </tr>
+      </thead>
+      <tbody id="resultadoClientes">
+      </tbody>
+    </table>
+    <button id="btn-save" name="btn-save" class="btn btn-success btn-block mb-2"
+      onclick="traerReporteClientes(),ocultar3(),mostrar3()">Generar
+      cliente y reservas por cliente</button>
+    <h3 id="texto2">Buscar reserva por fechas</h3>
+    <table class="table table-bordered table-condensed table-hover">
+      <thead>
+        <tr>
+          <td>fecha de inicio</td>
+          <td>fecha de devolucion</td>
+          <td>estado</td>
+        </tr>
+      </thead>
+      <tbody id="resultadoDate">
+      </tbody>
+    </table>
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label">Fecha de reserva</label>
+      <div class="col-md-4">
+        <input id="startDate" type="date" placeholder="ej: 20/10/2021" class="form-control input-md">
+        <span class="help-block">Inserte la fecha de la reserva</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-4 control-label">Fecha de reserva</label>
+      <div class="col-md-4">
+        <input id="devolutionDate" type="date" placeholder="ej: 20/10/2021" class="form-control input-md">
+        <span class="help-block">Inserte la fecha de la reserva</span>
+      </div>
+    </div>
+    <button id="btn-save" name="btn-save" class="btn btn-success btn-block mb-2"
+      onclick="traerReporteDate(),ocultar2()">Generar
+      reporte por fechas</button>
+
+
+  </div>
+  <br>
+  </div>
+  </div>
+  <!-- <h1>Reportes</h1>
+  <button onclick="traerReporteStatus()">Generar Reporte Status Reservas</button>
+  <div id="resultadoStatus"></div>
+  <input id="startDate" type="date">
+  <input id="devolutionDate" type="date">
+  <button onclick="traerReporteDate()">Generar Reporte por fecha</button>
+  <div id="resultadoDate"></div>
+  <button onclick="traerReporteClientes()">Generar Reporte clientes y cantidad de reservas por cliente</button>
+  <div id="resultadoClientes"></div> -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -3,7 +3,7 @@
  */
 function traerInformacionAdmin() {
   $.ajax({
-    url: 'http://129.151.117.222:8081/api/Admin/all',
+    url: 'http://localhost:8081/api/Admin/all',
     dataType: 'JSON',
     type: 'GET',
     success: function (respuesta) {
@@ -19,9 +19,8 @@ function pintarRespuesta(respuesta) {
   let myTable = "<table>";
   for (i = 0; i < respuesta.length; i++) {
     myTable += "<tr>";
-    myTable += "<td>" + respuesta[i].email + "</td>";
-    myTable += "<td>" + respuesta[i].password + "</td>";
     myTable += "<td>" + respuesta[i].name + "</td>";
+    myTable += "<td>" + respuesta[i].email + "</td>";
     myTable += '<td><button class="btn btn-warning" onclick="actualizarInformacionAdmin(' + respuesta[i].idAdmin + ')">Actualizar</button>' + "</td>";
     myTable += '<td><button class="btn btn-danger" onclick="borrarRegistroAdmin(' + respuesta[i].idAdmin + ')">Borrar</button>' + "</td>";
     myTable += "</tr>";
@@ -43,7 +42,7 @@ function guardarInformacionAdmin() {
     dataType: 'json',
     contentType: "application/json; charset=utf-8",
     data: dataTosend,
-    url: 'http://129.151.117.222:8081/api/Admin/save',
+    url: 'http://localhost:8081/api/Admin/save',
     //url: 'http://129.151.117.222:8081/api/Admin/save',
     type: 'POST',
     success: function (response) {
@@ -53,8 +52,8 @@ function guardarInformacionAdmin() {
       window.location.reload()
     },
     error: function (jqXHR, textStatus, errorThrown) {
-      window.location.reload()
-      alert("No se guardo correctamente");
+      //window.location.reload()
+      //alert("No se guardo correctamente");
     }
   });
 }
@@ -70,7 +69,7 @@ function borrarRegistroAdmin(idElemento) {
   $.ajax({
     dataType: 'json',
     data: dataTosend,
-    url: 'http://129.151.117.222:8081/api/Admin/' + idElemento,
+    url: 'http://localhost:8081/api/Admin/' + idElemento,
     type: 'DELETE',
     contentType: 'application/json',
     success: function (response) {

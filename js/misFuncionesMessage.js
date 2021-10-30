@@ -2,23 +2,24 @@ function obtenerItemsMessage() {
     $.ajax({
         dataType: 'json',
         //url: 'http://129.151.117.222:8081/api/Message/all',
-        url: 'http://129.151.117.222:8081/api/Message/all',
+        url: 'http://localhost:8081/api/Message/all',
         type: 'GET',
         success: function (respuesta) {
             console.log(respuesta)
-            pintarRespuesta(respuesta)
+            pintarRespuestaMessage(respuesta)
         },
         error: function (jqXHR, textStatus, errorThrown) {
         }
     });
 }
 
-function pintarRespuesta(respuesta) {
+function pintarRespuestaMessage(respuesta) {
 
     let myTable = "<table>";
     for (i = 0; i < respuesta.length; i++) {
         myTable += "<tr>";
         myTable += "<td>" + respuesta[i].messageText + "</td>";
+        myTable += "<td>" + respuesta[i].car.name + "</td>";
         myTable += '<td><button class="btn btn-warning" onclick="actualizarInformacionMessage(' + respuesta[i].idMessage + ')">Actualizar</button>' + "</td>";
         myTable += '<td><button class="btn btn-danger" onclick="borrarRegistroMessage(' + respuesta[i].idMessage + ')">Borrar</button>' + "</td>";
         myTable += "</tr>";
@@ -30,13 +31,14 @@ function pintarRespuesta(respuesta) {
 function registroMessage() {
     var elemento = {
         messageText: $("#messageText").val(),
+        car: { idCar: +$("#inputGroupSelect01").val() }
     }
     var dataTosend = JSON.stringify(elemento);
     // JSON = JavaScript Object Notation
     $.ajax({
         dataType: 'JSON',
         data: dataTosend,
-        url: 'http://129.151.117.222:8081/api/Message/save',
+        url: 'http://localhost:8081/api/Message/save',
         //url: 'http://129.151.117.222:8081/api/Message/save',
         type: 'POST',
         contentType: 'application/json; charset=utf-8',

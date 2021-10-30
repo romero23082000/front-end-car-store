@@ -8,12 +8,16 @@
   <title>Document</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script type="text/javascript" src="../js/misFuncionesGama.js"></script>
+  <script type="text/javascript" src="../js/misFuncionesCar.js"></script>
   <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
     integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 </head>
 
 <body>
+  <script type="text/javascript">
+    window.onload = traerInformacionCategorias();
+  </script>
   <!-- Inicio Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand" href="indexGama.html">Renta carros</a>
@@ -41,10 +45,14 @@
         <li class="nav-item">
           <a class="nav-link" href="indexAdmin.html">Admin</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="indexReportes.html">Reportes</a>
+        </li>
       </ul>
     </div>
   </nav>
   <!-- Fin navbar -->
+
 
   <div class="container">
     <div class="row">
@@ -52,6 +60,9 @@
       <div class="col-md-12">
         <form class="form-horizontal">
           <legend>Gama</legend>
+          <script type="text/javascript">
+            window.onload = traerInformacionCarros();
+          </script>
           <!-- Text input-->
           <div class="form-group">
             <label class="col-md-4 control-label">Nombre Gama</label>
@@ -91,12 +102,12 @@
             <tr>
               <th>Nombre gama</th>
               <td>Descripcion gama</td>
+              <td>Nombre del vehiculo</td>
               <td>Actualizar</td>
               <td>Borrar</td>
             </tr>
           </thead>
           <tbody id="listarGamas">
-
           </tbody>
         </table>
 
